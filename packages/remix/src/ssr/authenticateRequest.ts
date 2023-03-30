@@ -21,7 +21,8 @@ function isDevelopmentFromApiKey(apiKey: string): boolean {
  */
 export function authenticateRequest(args: LoaderFunctionArgs, opts: RootAuthLoaderOptions = {}): Promise<RequestState> {
   const { request, context } = args;
-  const { loadSession, loadUser, loadOrganization, authorizedParties } = opts;
+  const { loadSession, loadUser, loadOrganization } = opts;
+  const { audience, authorizedParties } = opts;
 
   // Fetch environment variables across Remix runtimes.
   // 1. First try from process.env if exists (Node).
@@ -81,6 +82,7 @@ export function authenticateRequest(args: LoaderFunctionArgs, opts: RootAuthLoad
 
   return Clerk({ apiUrl, apiKey, secretKey, jwtKey, proxyUrl, isSatellite, domain }).authenticateRequest({
     apiKey,
+    audience,
     secretKey,
     jwtKey,
     frontendApi,
