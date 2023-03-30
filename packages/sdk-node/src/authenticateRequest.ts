@@ -19,8 +19,9 @@ export const authenticateRequest = (
   options?: ClerkMiddlewareOptions,
 ) => {
   const cookies = parseCookies(req);
-  const { jwtKey, authorizedParties } = options || {};
+  const { jwtKey, authorizedParties, audience } = options || {};
   return clerkClient.authenticateRequest({
+    audience,
     apiKey,
     secretKey,
     frontendApi,
