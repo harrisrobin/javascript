@@ -257,8 +257,8 @@ export const itIT: LocalizationResource = {
       connectedAccountsSection: {
         title: 'Account collegati',
         primaryButton: 'Collega account',
-        title__conectionFailed: 'Riprova la connessione fallita',
-        actionLabel__conectionFailed: 'Riprova',
+        title__connectionFailed: 'Riprova la connessione fallita',
+        actionLabel__connectionFailed: 'Riprova',
         destructiveActionTitle: 'Rimuovi',
         destructiveActionSubtitle: 'Rimuovi questo account collegato dal tuo account',
         destructiveActionAccordionSubtitle: 'Rimuovi account collegato',

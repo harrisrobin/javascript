@@ -287,10 +287,10 @@ type _LocalizationResource = {
       connectedAccountsSection: {
         title: LocalizationValue;
         primaryButton: LocalizationValue;
-        title__conectionFailed: LocalizationValue;
+        title__connectionFailed: LocalizationValue;
         title__reauthorize: LocalizationValue;
         subtitle__reauthorize: LocalizationValue;
-        actionLabel__conectionFailed: LocalizationValue;
+        actionLabel__connectionFailed: LocalizationValue;
         actionLabel__reauthorize: LocalizationValue;
         destructiveActionTitle: LocalizationValue;
         destructiveActionSubtitle: LocalizationValue;

@@ -258,8 +258,8 @@ export const deDe: LocalizationResource = {
       connectedAccountsSection: {
         title: 'Verbundene Konten',
         primaryButton: 'Konto verbinden',
-        title__conectionFailed: 'Fehlgeschlagene Verbindung erneut versuchen',
-        actionLabel__conectionFailed: 'Versuchen Sie es nochmal',
+        title__connectionFailed: 'Fehlgeschlagene Verbindung erneut versuchen',
+        actionLabel__connectionFailed: 'Versuchen Sie es nochmal',
         destructiveActionTitle: 'Entfernen',
         destructiveActionSubtitle: 'Entfernen Sie dieses Konto aus Ihrem Konto',
         destructiveActionAccordionSubtitle: 'Verbundenes Konto entfernen',

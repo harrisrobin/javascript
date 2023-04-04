@@ -254,8 +254,8 @@ export const ptBR: LocalizationResource = {
       connectedAccountsSection: {
         title: 'Contas conectadas',
         primaryButton: 'Conectar conta',
-        title__conectionFailed: 'Conexão falhou, tente novamente',
-        actionLabel__conectionFailed: 'Tentar novamente',
+        title__connectionFailed: 'Conexão falhou, tente novamente',
+        actionLabel__connectionFailed: 'Tentar novamente',
         destructiveActionTitle: 'Remover',
         destructiveActionSubtitle: 'Remover esta conexão da sua conta',
         destructiveActionAccordionSubtitle: 'Remover conexão',

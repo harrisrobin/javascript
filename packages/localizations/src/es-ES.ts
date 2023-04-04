@@ -258,8 +258,8 @@ export const esES: LocalizationResource = {
       connectedAccountsSection: {
         title: 'Cuentas conectadas',
         primaryButton: 'Conectar cuenta',
-        title__conectionFailed: 'Reintentar conexión fallida',
-        actionLabel__conectionFailed: 'Inténtelo nuevamente',
+        title__connectionFailed: 'Reintentar conexión fallida',
+        actionLabel__connectionFailed: 'Inténtelo nuevamente',
         destructiveActionTitle: 'Quitar',
         destructiveActionSubtitle: 'Quitar esta cuenta conectada a su cuenta',
         destructiveActionAccordionSubtitle: 'Quitar la cuenta conectada',
