@@ -5,6 +5,7 @@ import type {
   OAuthStrategy,
   PasswordStrategy,
   PhoneCodeStrategy,
+  SAMLStrategy,
   TOTPStrategy,
   Web3Strategy,
 } from './strategies';
@@ -45,6 +46,10 @@ export type OauthFactor = {
   strategy: OAuthStrategy;
 };
 
+export type SAMLFactor = {
+  strategy: SAMLStrategy;
+};
+
 export type TOTPFactor = {
   strategy: TOTPStrategy;
 };
@@ -63,7 +68,10 @@ export type OAuthConfig = OauthFactor & {
   redirectUrl: string;
   actionCompleteRedirectUrl: string;
 };
-
+export type SAMLConfig = SAMLFactor & {
+  redirectUrl: string;
+  actionCompleteRedirectUrl: string;
+};
 export type PhoneCodeSecondFactorConfig = {
   strategy: PhoneCodeStrategy;
   phoneNumberId?: string;

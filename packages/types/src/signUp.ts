@@ -21,6 +21,7 @@ import type {
   EmailLinkStrategy,
   OAuthStrategy,
   PhoneCodeStrategy,
+  SAMLStrategy,
   TicketStrategy,
   Web3Strategy,
 } from './strategies';
@@ -114,6 +115,11 @@ export type PrepareVerificationParams =
       strategy: OAuthStrategy;
       redirectUrl?: string;
       actionCompleteRedirectUrl?: string;
+    }
+  | {
+      strategy: SAMLStrategy;
+      redirectUrl?: string;
+      actionCompleteRedirectUrl?: string;
     };
 
 export type AttemptVerificationParams =
@@ -154,7 +160,8 @@ export type SignUpCreateParams = Partial<
     externalAccountStrategy: string;
     externalAccountRedirectUrl: string;
     externalAccountActionCompleteRedirectUrl: string;
-    strategy: OAuthStrategy | TicketStrategy;
+    strategy: OAuthStrategy | SAMLStrategy | TicketStrategy;
+    emailAddress: string;
     redirectUrl: string;
     actionCompleteRedirectUrl: string;
     transfer: boolean;
@@ -168,6 +175,7 @@ export type SignUpUpdateParams = SignUpCreateParams;
 export type SignUpAuthenticateWithMetamaskParams = {
   unsafeMetadata?: SignUpUnsafeMetadata;
 };
+
 export interface SignUpVerificationsResource {
   emailAddress: SignUpVerificationResource;
   phoneNumber: SignUpVerificationResource;

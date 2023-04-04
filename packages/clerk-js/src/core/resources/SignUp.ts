@@ -189,13 +189,16 @@ export class SignUp extends BaseResource implements SignUpResource {
     redirectUrl,
     redirectUrlComplete,
     strategy,
+    emailAddress,
     continueSignUp = false,
     unsafeMetadata,
   }: AuthenticateWithRedirectParams & { unsafeMetadata?: SignUpUnsafeMetadata }): Promise<void> => {
     const authenticateFn = (args: SignUpCreateParams | SignUpUpdateParams) =>
       continueSignUp && this.id ? this.update(args) : this.create(args);
+
     const { verifications } = await authenticateFn({
       strategy,
+      emailAddress,
       redirectUrl,
       actionCompleteRedirectUrl: redirectUrlComplete,
       unsafeMetadata,

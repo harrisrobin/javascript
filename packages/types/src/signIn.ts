@@ -14,6 +14,8 @@ import type {
   PhoneCodeConfig,
   PhoneCodeFactor,
   PhoneCodeSecondFactorConfig,
+  SAMLConfig,
+  SAMLFactor,
   TOTPAttempt,
   TOTPFactor,
   Web3Attempt,
@@ -42,6 +44,7 @@ import type {
   OAuthStrategy,
   PasswordStrategy,
   PhoneCodeStrategy,
+  SAMLStrategy,
   TicketStrategy,
   TOTPStrategy,
   Web3Strategy,
@@ -93,7 +96,8 @@ export type SignInFirstFactor =
   | PhoneCodeFactor
   | PasswordFactor
   | Web3SignatureFactor
-  | OauthFactor;
+  | OauthFactor
+  | SAMLFactor;
 
 export type SignInSecondFactor = PhoneCodeFactor | TOTPFactor | BackupCodeFactor;
 
@@ -110,7 +114,8 @@ export type PrepareFirstFactorParams =
   | EmailLinkConfig
   | PhoneCodeConfig
   | Web3SignatureConfig
-  | OAuthConfig;
+  | OAuthConfig
+  | SAMLConfig;
 
 export type AttemptFirstFactorParams = EmailCodeAttempt | PhoneCodeAttempt | PasswordAttempt | Web3Attempt;
 
@@ -121,6 +126,12 @@ export type AttemptSecondFactorParams = PhoneCodeAttempt | TOTPAttempt | BackupC
 export type SignInCreateParams = (
   | {
       strategy: OAuthStrategy;
+      redirectUrl: string;
+      actionCompleteRedirectUrl?: string;
+    }
+  | {
+      strategy: SAMLStrategy;
+      emailAddress: string;
       redirectUrl: string;
       actionCompleteRedirectUrl?: string;
     }
@@ -161,7 +172,8 @@ export type SignInStrategy =
   | Web3Strategy
   | TOTPStrategy
   | BackupCodeStrategy
-  | OAuthStrategy;
+  | OAuthStrategy
+  | SAMLStrategy;
 
 export interface SignInJSON extends ClerkResourceJSON {
   object: 'sign_in';

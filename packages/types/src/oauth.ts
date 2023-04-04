@@ -1,4 +1,4 @@
-import type { OAuthStrategy } from './strategies';
+import type { OAuthStrategy, SAMLStrategy } from './strategies';
 
 export type OAuthScope = string;
 
@@ -241,10 +241,6 @@ export function sortedOAuthProviders(sortingArray: OAuthStrategy[]) {
 
 export type AuthenticateWithRedirectParams = {
   /**
-   * One of the supported OAuth providers you can use to authenticate with, eg 'oauth_google'.
-   */
-  strategy: OAuthStrategy;
-  /**
    * Full URL or path to the route that will complete the OAuth flow.
    * Typically, this will be a simple `/sso-callback` route that calls `Clerk.handleRedirectCallback`
    * or mounts the <AuthenticateWithRedirectCallback /> component.
@@ -255,7 +251,28 @@ export type AuthenticateWithRedirectParams = {
    */
   redirectUrlComplete: string;
   /**
-   * Whether to continue (i.e. PATCH) an existing SignUp (if present) or create a new SignUp
+   * Whether to continue (i.e. PATCH) an existing SignUp (if present) or create a new SignUp.
    */
   continueSignUp?: boolean;
-};
+} & (
+  | {
+      /**
+       * One of the supported OAuth providers you can use to authenticate with, eg 'oauth_google'.
+       */
+      strategy: OAuthStrategy;
+      /**
+       * Email address not expected for OAuth case.
+       */
+      emailAddress: never;
+    }
+  | {
+      /**
+       * Defaults to `saml`, actual SAML connection is selected via the `emailAddress`.
+       */
+      strategy: SAMLStrategy;
+      /**
+       * Email address that can be used to select the target SAML connection for this request.
+       */
+      emailAddress: string;
+    }
+);
