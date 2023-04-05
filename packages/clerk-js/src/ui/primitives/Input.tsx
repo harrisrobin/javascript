@@ -34,6 +34,7 @@ type OwnProps = {
   isDisabled?: boolean;
   hasError?: boolean;
   focusRing?: boolean;
+  isSuccessful?: boolean;
 };
 
 // @ts-ignore
@@ -41,9 +42,13 @@ export type InputProps = PrimitiveProps<'input'> & StyleVariants<typeof applyVar
 
 export const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const formControlProps = useFormControl() || {};
-  const propsWithoutVariants = filterProps({ ...props, hasError: props.hasError || formControlProps.hasError });
+  const propsWithoutVariants = filterProps({
+    ...props,
+    hasError: props.hasError || formControlProps.hasError,
+    isSuccessful: props.isSuccessful || formControlProps.isSuccessful,
+  });
   const { onChange } = useInput(propsWithoutVariants.onChange);
-  const { isDisabled, hasError, focusRing, isRequired, ...rest } = propsWithoutVariants;
+  const { isDisabled, hasError, focusRing, isRequired, isSuccessful, ...rest } = propsWithoutVariants;
 
   return (
     <input
