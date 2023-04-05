@@ -18,7 +18,7 @@ const { applyVariants, filterProps } = createVariants((theme, props) => ({
     width: '100%',
     ...common.textVariants(theme).smallRegular,
     ...common.borderVariants(theme, props).normal,
-    ...(props.focusRing === false ? {} : common.focusRingInput(theme)),
+    ...(props.focusRing === false ? {} : common.focusRingInput(theme, props)),
     ...common.disabled(theme),
     [mqu.ios]: {
       fontSize: theme.fontSizes.$md,
