@@ -35,6 +35,7 @@ type FormControlProps = Omit<PropsOfComponent<typeof Input>, 'label' | 'placehol
   setError: (error: string | ClerkAPIError | undefined) => void;
   setSuccessful: (isSuccess: boolean) => void;
   isSuccessful: boolean;
+  complexity?: boolean;
 };
 
 // TODO: Convert this into a Component?
@@ -59,6 +60,7 @@ export const FormControl = forwardRef<HTMLInputElement, FormControlProps>((props
     setError,
     isSuccessful,
     setSuccessful,
+    complexity,
     ...rest
   } = props;
   const hasError = !!errorText;
@@ -144,6 +146,7 @@ export const FormControl = forwardRef<HTMLInputElement, FormControlProps>((props
         hasError={hasError}
         isDisabled={isDisabled}
         isRequired={isRequired}
+        complexity={complexity}
         {...rest}
         ref={ref}
         placeholder={t(placeholder)}
